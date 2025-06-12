@@ -1,0 +1,56 @@
+Price Predictor System
+A production-grade, end-to-end machine learning system for predicting house prices. This project demonstrates best practices in data ingestion, preprocessing, feature engineering, model training, evaluation, and deployment using modular, extensible, and design-pattern-driven code.
+
+Project Structure
+Key Features
+Modular Pipeline: Built with ZenML, each step (ingestion, cleaning, feature engineering, model building, evaluation) is a reusable component.
+Design Patterns: Uses Factory, Strategy, and Template patterns for extensibility and maintainability (see explanations/).
+Experiment Tracking: Integrated with MLflow for experiment tracking and model management.
+Deployment: Supports batch and real-time inference via MLflow model deployment.
+Extensive EDA: Notebooks and scripts for exploratory data analysis (analysis/EDA.ipynb).
+Testing: Unit tests for core modules.
+Getting Started
+## Install Requirements
+ pip install -r requirements.txt
+
+## Prepare Data
+Place your data archive (e.g., archive.zip) in the data directory. The pipeline expects a ZIP file containing a CSV (e.g., AmesHousing.csv).
+
+## Run the Training Pipeline:-
+python run_pipeline.py
+
+This will:
+
+Ingest and preprocess data
+Engineer features
+Train and evaluate a regression model
+Log experiments to MLflow
+
+## Run the Deployment Pipeline
+python run_deployment.py
+
+This will:
+Deploy the trained model using MLflow
+Start a prediction server for inference
+
+## Inspect Experiments
+Start the MLflow UI:
+mlflow ui --backend-store-uri mlruns
+
+Open http://localhost:5000 to view experiment runs.
+
+## Notebooks & Analysis
+## EDA.ipynb: Exploratory Data Analysis
+## analyze_src: Modular EDA scripts
+## Code Highlights
+## Data ingestion via src.ingest_data.DataIngestorFactory
+## Feature engineering via steps.feature_engineering_step
+## Model building via steps.model_building_step
+## Pipelines defined in training_pipeline.py and deployment_pipeline.py
+## Extending the Project
+## Add new feature engineering strategies in feature_engineering.py
+## Implement new model strategies in model_building.py
+## Add new pipeline steps in steps
+
+## License
+Apache 2.0
